@@ -1,0 +1,19 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Run Python Backend",
+            "type": "shell",
+            "command": "./.venv/bin/python backend/app.py",
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "Run JS Client",
+            "type": "shell",
+            "command": "node client/index.js",
+            "group": "build",
+            "problemMatcher": []
+        }
+    ]
+}
