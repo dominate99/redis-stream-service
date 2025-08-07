@@ -32,8 +32,10 @@ export async function xlen(stream) {
 }
 
 export async function xread(streams, ids, count = 10) {
-    const streams_param = streams.map((stream, index) => `${stream} ${ids[index]}`).join(' ');
-    const res = await fetch(`${BACKEND_URL}/xread?streams=${streams_param}&count=${count}`);
+    const params = new URLSearchParams();
+    params.append('streams', streams.map((stream, index) => `${stream} ${ids[index]}`).join(' '));
+    params.append('count', count);
+    const res = await fetch(`${BACKEND_URL}/xread?${params.toString()}`);
     if (!res.ok) {
         throw new Error(`HTTP error! status: ${res.status}`);
     }
